@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
 import './App.css';
+import Cart from './Component/Cart/Cart';
+import Header from './Component/Header/Header';
+import riderData from '../src/fakeData/data.json'
+
+
 
 function App() {
+ const [rides,setRides] = useState([]);
+ useEffect(()=> {
+   setRides(riderData);
+   console.log(riderData);
+
+ });
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <Header></Header>
+     {
+       rides.map(ride=><Cart ride={ride}></Cart>)
+     }
     </div>
   );
 }
