@@ -1,27 +1,68 @@
 
-import { useEffect, useState } from 'react';
 import './App.css';
-import Cart from './Component/Cart/Cart';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './Component/Home/Home';
+import NoMatch from './NoMatch/NoMatch';
+import About from './Component/About/About';
+import { createContext, useState } from 'react';
+import LoginForm from './LoginForm/LoginForm';
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
+import Destination from './Component/Destination/Destination';
 import Header from './Component/Header/Header';
-import riderData from '../src/fakeData/data.json'
 
 
+
+
+export const UserContext = createContext();
 
 function App() {
- const [rides,setRides] = useState([]);
- useEffect(()=> {
-   setRides(riderData);
-   console.log(riderData);
-
- });
+  const [loggedInUser,setLoggedInUser]= useState({});
  
   return (
-    <div >
-     <Header></Header>
-     {
-       rides.map(ride=><Cart ride={ride}></Cart>)
-     }
-    </div>
+  
+    <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
+      <p>User:{loggedInUser.name}</p>
+
+    <Router>
+    <Header/>
+      <Switch>
+
+      <Route  exact path="/home">
+          <Home/>
+           </Route>
+
+        <Route  path="/about">
+         <About/>
+           </Route>
+
+           <Route  path="/login">
+          <LoginForm/>
+           </Route>
+ 
+        <PrivateRoute path="/destination">
+          <Destination/>
+        </PrivateRoute>
+          
+
+           <Route  path="/">
+          <Home/>
+           </Route>
+
+
+           <Route path="*">
+          <NoMatch/>
+           </Route>
+
+
+      </Switch>
+    </Router>
+    </UserContext.Provider>
+
   );
 }
 

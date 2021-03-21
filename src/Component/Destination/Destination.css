@@ -1,0 +1,19 @@
+.formStyle {
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  padding: 2rem;
+  background-color: rgb(47, 189, 255);
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: o 16px 26px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+.style1 {
+  width: 70%;
+  padding: 0.8rem;
+  border-radius: 20px;
+  border: none;
+}

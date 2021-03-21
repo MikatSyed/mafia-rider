@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import'./Header.css';
 
 const Header = () => {
@@ -16,18 +18,18 @@ const Header = () => {
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#" id="navLink">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="" id="navLink"><Link to="/home">Home</Link>  <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Destination</a>
+        <a class="nav-link" href="#"> <Link to="/destination">Destination</Link></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#" >Blog</a>
+        <a class="nav-link " href="#" ><Link to="/login">Blog</Link></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#" >Contract</a>
+        <a class="nav-link " href="#" ><Link to="/login">Contract</Link></a>
       </li>
- <button class="btn btn-danger">Login</button>
+ <button class="btn btn-danger"><Link to="/login">Login</Link></button>
     </ul>
    
   </div>
